@@ -41,3 +41,5 @@ while True:
     finally:
         con.flushInput()
         con.flushOutput()
+
+        time.sleep(1)
