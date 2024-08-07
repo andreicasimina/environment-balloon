@@ -8,8 +8,8 @@ import datetime
 import time
 import subprocess
 
-subprocess.call(["sudo","systemctl","stop","serial-getty@ttyS0.service"])
-subprocess.call(["sudo","systemctl","disable","serial-getty@ttyS0.service"])
+# subprocess.call(["sudo","systemctl","stop","serial-getty@ttyS0.service"])
+# subprocess.call(["sudo","systemctl","disable","serial-getty@ttyS0.service"])
 
 con = serial.Serial(               #LoRa用の設定
         port = "/dev/ttyS0",           #RasPiシリアル通信を用いる
@@ -17,7 +17,7 @@ con = serial.Serial(               #LoRa用の設定
         parity = serial.PARITY_NONE,     #パリティ
         bytesize = serial.EIGHTBITS,     #データのビット数
         stopbits = serial.STOPBITS_ONE,  #ストップビット数
-        timeout = 5,                  #タイムアウト値
+        timeout = 1,                  #タイムアウト値
         xonxoff = 0,                     #ソフトウェアフロー制御
         rtscts = 0,                      #RTS/CTSフロー制御
     )
