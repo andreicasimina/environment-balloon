@@ -24,17 +24,18 @@ con = serial.Serial(            #LoRa用の設定
 )
 
 while True:
-    print("Trying to read message...")
-    received_message = con.readline().decode() #1行ごとに読み込み、処理を繰り返す
+    try:
+        print("Trying to read message...")
+        received_message = con.readline().decode() #1行ごとに読み込み、処理を繰り返す
 
-    if received_message != None:
-        print(received_message)
-
-        reply = "Got your message!\r\n"        
-
-        con.write(reply.encode())
-    else:
-        print("No messages received!")
-
-    con.flushInput()
-    con.flushOutput()
+        if received_message != None:
+            print(received_message)
+            reply = "Got your message!\r\n"        
+            con.write(reply.encode())
+        else:
+            print("No messages received!")
+    except Exception as e:
+        print(e)
+    finally:
+        con.flushInput()
+        con.flushOutput()

@@ -25,15 +25,15 @@ con = serial.Serial(               #LoRa用の設定
 time.sleep(1)
 
 while True:
-    print("Trying to send message...")
-
-    message = "Hello, I am transmitter-a!\r\n"        
-    con.write(message.encode())
-
-    reply_message = con.readline()
-    reply_message = reply_message.decode()
-
-    print(reply_message)
-        
-    con.flushInput()
-    con.flushOutput()
+    try: 
+        print("Trying to send message...")
+        message = "Hello, I am transmitter-a!\r\n"        
+        con.write(message.encode())
+        reply_message = con.readline()
+        reply_message = reply_message.decode()
+        print(reply_message)
+    except Exception as e:
+        print(e)
+    finally:
+        con.flushInput()
+        con.flushOutput()
